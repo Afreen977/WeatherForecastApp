@@ -2,7 +2,7 @@
 Project Title
 An weather forecasting app for any city giving measurements about temperature, precipitation,humidity,wind speed and giving forecasts for the five days.
 
-Description
+Description 
 The app is built using React library.The main app structure is built of two components-
 CityDetails and DailyForecasts.
 CityDetails represents the top part of the widget where the cityname and the current weather conditions of the city are shown.
