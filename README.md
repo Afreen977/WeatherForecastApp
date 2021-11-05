@@ -2,7 +2,7 @@
 Project Title
 An weather forecasting app for any city giving measurements about temperature, precipitation,humidity,wind speed and giving forecasts for the five days.
 
-Description 
+Description-
 The app is built using React library.The main app structure is built of two components-
 CityDetails and DailyForecasts.
 CityDetails represents the top part of the widget where the cityname and the current weather conditions of the city are shown.
@@ -14,6 +14,6 @@ How to Install and start up the project?
 1.Run the command-npm install to install all the packages mentioned in package.json.
 2.Run the command-npm run serve to start up the project.
 
-Testing
+Testing-
 This project is unit tested and total test case count is 8.Jest framework is used for this purpose.
 
