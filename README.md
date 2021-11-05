@@ -10,6 +10,7 @@ DailyForecasts represents the bottom part of the widget where daily forecasts(ma
 There is also a feature of changing city from the city dropdown.
 You can even change between metric and imperial units to check the parameters of the weather.
 The app is also made responsive across different screen sizes.
+
 How to Install and start up the project?
 1.Run the command-npm install to install all the packages mentioned in package.json.
 2.Run the command-npm run serve to start up the project.
