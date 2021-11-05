@@ -1,0 +1,15 @@
+.mainDiv{
+    width:50vw;
+    height:78%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border:0.5px dotted blue;
+    flex-direction: column;
+    font-family: 'Varela Round', sans-serif;
+}
+@media only screen and (max-width:1042px){
+.mainDiv{
+    height: 100%;
+}
+}
