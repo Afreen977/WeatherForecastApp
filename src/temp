@@ -1,0 +1,199 @@
+ animation.addStatusListener((status) {
+      print(status);
+    });
+//////////////////////////////////////////////////////////////
+    animation.addStatusListener((status) {
+      if(status==AnimationStatus.completed){
+        controller.reverse(from:1.0);
+      }
+      else if(status==AnimationStatus.dismissed){
+        controller.forward();
+      }
+    });
+//////////////////////////////////////////////////////////////////
+
+  void dispose() { // called when an widget is unmounted
+    // TODO: implement dispose
+    controller.dispose();//controller should also be dispose on unmounting
+    super.dispose();
+  }
+////////////////////////////////////////////////////////////////////
+animation=ColorTween(begin: Colors.red,end:Colors.blue).animate(parent);
+use animation.value
+/////////////////////////////////////////////////////////////////////////
+Material(
+                elevation: 5.0,
+                color: Colors.lightBlueAccent,
+                borderRadius: BorderRadius.circular(30.0),
+                child: MaterialButton(
+                  onPressed: () {
+                   Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                  minWidth: 200.0,
+                  height: 42.0,
+                  child: Text(
+                    'Log In',
+                  ),
+                ),
+              )
+////////////////////////////////////////////////////////////////////////////
+Dart mixins
+Multiple inheritence is not allowed in dart too.
+
+mixin CanSwim{
+
+void fly{
+  print('Changing position by flying')
+}
+}
+class Duck extends Animal with CanSwim,Cnfly{
+
+
+}
+/////////////////////////////////////////////////////////
+Using flutter animation packages
+AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                     'Flash Chat',
+                        textStyle: TextStyle(
+                          fontSize: 45.0,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        speed: const Duration(seconds: 1), 
+                    ),
+                  ],
+
+                )
+/////////////////////////////////////////////////////////////////
+          TextField(
+             obscureText:true,
+             keyboardType:TextInputType.emailAddress
+              onChanged: (value) {
+                //Do something with the user input.
+              },
+              decoration: InputDecoration(
+                hintText: 'Enter your email',
+                contentPadding:
+                    ,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 1.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 2.0),
+                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+                ),
+              ),
+            )
+///////////////////////////////////////////////////////////
+kTextFieldDecoration.copyWith(hintText: 'Enter your pasword')
+
+/////////////////////////////////////////////////////////////
+Steps to use firebase-
+1.Create a project.
+2.Add firebase to android app.(You can get the package name from applicationId of build.gradle(android-->app-->build.gradle))
+3.Download google-services.json.
+4.Go to build.gradle-->add the dependencies.
+5.Go to app level build.gradle-->add the dependencies.
+6.Add the dependencies firebase_core,firebase_auth,cloud_firestore.
+7.pod repo update-->to update CocoaPods(mandatory)
+8.sudo gem install cocoapods.
+9.pod setup
+
+
+Add firebase_auth in your dart file
+final auth=FirebaseAuth.instance
+final newUser=await auth.createUserWithEmailAndPassword(email,password);
+if(newUser!=null){
+Navigator.pushNamed(context,ChatScreen.id)
+}
+
+auth.currentUser()
+Enable the email/password system in firebase.
+auth.signinWithEmailAndPasswor(email:email,password:password)
+auth.signout()
+Add a modal modal_progress_hud
+
+Go to cloud firestore-->create a database-->create a collection.
+import cloud_firestore
+final _firestore=firestore.instance
+_firestore_collection('messages').add({messageText:})
+
+final messages=await _firestore_collection('messages').getDocuments();
+for(var message in message.documents){
+  print(message.data);
+}
+
+
+_firestore.collection('messages').snapshots()
+
+await for(var snapshot in _firestore.collection('messages').snapshots()){ -->array of futures it is called a stream Stream<Future>
+    for(var message in snapshot.documents){-->firebase's snapshot
+   print(message.data)
+}
+}
+
+For getting those messages in the UI
+
+body:SafeArea(
+child:Column(
+children:<Widget>[
+StreamBuilder<QuerySnapshot>(
+stream:_firestore.collection('messages').snapshots(),
+builder:(context,snapshot){
+  if(snapshot.hasData){
+   final messages=snapshot.data.documents;-->flutter's snapshot
+   List<Text> messageWidgets=[];
+   for(var message in messages){
+     final messageText=message.data['text']-->text is the name of the field,
+  final messageSender=message.data['sender'];
+  final messageWidget=Text(`$messageText from $messageSender `)
+  messageWidgets.add(messageWidget)
+  }
+return Column(children:messageWidgets)
+}
+}
+
+}
+)
+]
+))
+
+
+CircularProgressIndicator(backgroundColor:Colors.lightblueAccent)
+ModalProgressHud
+
+
+
+return Expanded(-->Expanded takes space only which is needed
+child:ListView(
+children:messageWidgets,
+reverse:true
+)
+)
+
+
+final messageTextController=TextEditingController()
+child:TextField(
+controller:messageTextController,
+onChanged:(value){
+
+}
+onPressed:(){
+  messageTextController.clear()
+}
+)
+
+Flexible(-->Flexible makes the child to take up lesser space than the height specified
+child:Hero(tag:,child:)
+)
+/////////////////////////////////////////////////////////////////
+
+Material(
+borderRadius:BorderRadius.only(topLeft:Radius.circular(30.0),
+bottomLeft:Radius.circular(30.0))
+)
